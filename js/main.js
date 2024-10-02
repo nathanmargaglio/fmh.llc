@@ -264,7 +264,7 @@
     mobileMenuOutsideClick();
     sliderMain();
     stickyFunction();
-    detectDayNightMode();
+    handleDarkMode();
   });
 })();
 
@@ -292,15 +292,24 @@ Accordion.prototype.dropdown = function (e) {
 var accordion = new Accordion($("#accordion"), false);
 
 function enableDarkMode() {
-  document.body.classList.toggle("dark-mode");
+  document.body.classList.add("dark-mode");
 }
 
-function detectDayNightMode() {
-  const hours = new Date().getHours();
-  const isDayTime = hours > 6 && hours < 20;
-  if (isDayTime === true) {
-    // do nothing
-  } else {
+function disableDarkMode() {
+  document.body.classList.remove("dark-mode");
+}
+
+function toggleDarkMode() {
+  document.body.classList.toggle("dark-mode");
+  const darkModeEnabled = document.body.classList.contains("dark-mode");
+  localStorage.setItem("darkMode", darkModeEnabled);
+}
+
+function handleDarkMode() {
+  const darkModeEnabled = localStorage.getItem("darkMode");
+  if (darkModeEnabled === "true" || darkModeEnabled === null) {
     enableDarkMode();
+  } else {
+    disableDarkMode();
   }
 }
