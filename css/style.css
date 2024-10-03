@@ -618,6 +618,17 @@ body.offcanvas .colorlib-nav-toggle {
 	background-position: center center;
 	background-repeat: no-repeat;
 	position: relative;
+	text-align: center;
+}
+
+.logo-bar {
+	display: inline-block;
+	position: relative;
+	width: 220px;
+	height: 40px;
+	top: -40px;
+	background: #6d6e71;
+	text-align: center;
 }
 
 .colorlib-heading {
